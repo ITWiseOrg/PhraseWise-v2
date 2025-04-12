@@ -80,7 +80,19 @@ function App() {
   }, [charLength, includeNumbers, includeSymbols, useSpecialWords]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center space-y-4"
+        >
+          <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-white text-lg font-medium">Validating session...</p>
+        </motion.div>
+      </div>
+    );
   }
 
   if (!isAuthenticated) {
