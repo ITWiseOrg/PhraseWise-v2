@@ -27,7 +27,14 @@ const SilentAuthWrapper = ({ children }: { children: React.ReactNode }) => {
   }, [isAuthenticated, isLoading, loginWithRedirect]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-white text-lg font-medium">Validating token...</p>
+        </div>
+      </div>
+    );
   }
 
   return <>{children}</>;
